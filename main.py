@@ -25,5 +25,18 @@ def root():
       <input type="submit" value="計算">
     </form>
     """
+
+@app.route("/calc", methods=["post"])
+def calc():
+    a = str(request.form.get("a"))
+    url = a
+    # URLを開く
+    #html = urllib.request.urlopen(url)
+    # BeautifulSoupで開く
+    # r = BeautifulSoup(html, "html.parser")
+    response = requests.get(url)
+    bs = BeautifulSoup(response.text, "html.parser")
+    return "<h1>答えは..." + str(bs) + "</h1>"
+
 if __name__ == '__main__':
   app.run()
