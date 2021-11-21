@@ -1,10 +1,3 @@
-from flask import *
-from django.shortcuts import render
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
-import urllib.request
-import requests
-from bs4 import BeautifulSoup
 from flask import Flask
 import os
 
