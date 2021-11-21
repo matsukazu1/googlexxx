@@ -1,14 +1,19 @@
 from flask import *
+from django.shortcuts import render
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+import urllib.request
+import requests
+from bs4 import BeautifulSoup
+from flask import Flask
 import os
-# -*- coding: utf-8 -*-
 
-
-# Flaskオブジェクトの生成
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-  return render_template('index.html')
+@app.route("/")
+def hello():
+    return "Hello, Heroku"
 
-if __name__ == '__main__':
-  app.run()
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
