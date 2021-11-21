@@ -1,3 +1,5 @@
+from flask import Flask
+import os
 from flask import *
 from django.shortcuts import render
 from django.views.generic import CreateView
@@ -8,15 +10,12 @@ from bs4 import BeautifulSoup
 from flask import Flask
 import os
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template
 
-
-# Flaskオブジェクトの生成
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-  return render_template('index.html')
+@app.route("/")
+def hello():
+    return "Hello, Heroku"
 
 if __name__ == '__main__':
   app.run()
