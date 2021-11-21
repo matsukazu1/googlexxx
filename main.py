@@ -20,8 +20,7 @@ def root():
     return """
     <html><body>
     <form action="/calc" method="post">
-      <input type="text" name="a"> ×
-      <input type="text" name="b">
+      <input type="text" name="a">
       <input type="submit" value="計算">
     </form>
     """
@@ -34,9 +33,11 @@ def calc():
     #html = urllib.request.urlopen(url)
     # BeautifulSoupで開く
     # r = BeautifulSoup(html, "html.parser")
-    response = requests.get(url)
-    bs = BeautifulSoup(response.text, "html.parser")
-    return "<h1>答えは..." + str(bs) + "</h1>"
+    html = requests.get(url)
+    html.encoding = html.apparent_encoding
+    soup = BeautifulSoup(html.text, "html.parser")
+    ps = soup.title.string
+    return "<h1>答えは..." + str(ps) + "</h1>"
 
 if __name__ == '__main__':
   app.run()
