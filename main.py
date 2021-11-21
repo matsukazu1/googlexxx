@@ -7,13 +7,16 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask
 import os
+# -*- coding: utf-8 -*-
+from flask import Flask, render_template
 
+
+# Flaskオブジェクトの生成
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello, Heroku"
+@app.route('/')
+def index():
+  return render_template('index.html')
 
-if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+if __name__ == '__main__':
+  app.run()
