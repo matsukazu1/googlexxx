@@ -3,21 +3,24 @@
 <head>
   <title>flask練習</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-  <h1>対象URL</h1>
-  <p>{{ a }}</p>
-  <h1>canonicalタグ</h1>
-  <p>{{ xs }}</p>
-  <h1>ディスクリプションタグ</h1>
-  <p>{{ desc }}</p>
-  <p>文字数：{{ ln2 }}</p>
-  <h1>ページ内文字数</h1>
-  <p>{{ ln3 }}</p>
-  <h1>見出し要素</h1>
+  <div class="container">
+  <h1>サイト情報</h1>
+  <h2>対象URL</h2>
+  <p class="lead">{{ a }}</p>
+  <h2>canonicalタグ</h2>
+  <p class="lead">{{ xs }}</p>
+  <h2>ディスクリプションタグ</h2>
+  <p class="lead">{{ desc }}</p>
+  <p class="lead">文字数：{{ ln2 }}</p>
+  <h2>ページ内文字数</h2>
+  <p class="lead">{{ ln3 }}</p>
+  <h2>見出し要素</h2>
   {% for bullet in df %}
   <li>{{ bullet }}</li>
   {% endfor %}
+</div>
 </body>
 </html>

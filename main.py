@@ -26,8 +26,8 @@ def root():
     </head>
     </<body>
     <form action="/hello.html" method="post" target="_blank" >
-      <input type="text" name="a">
-      <input type="submit" value="計算" target="_blank">
+      <input type="text" name="a" style="width:100%;">
+      <input type="submit" value="計算" target="_blank" style="width:100%;margin-top: 10px;">
     </form>
     """
 
