@@ -53,7 +53,24 @@ def hello():
     city = str(ps)
     citys = "komama"
     df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
-    return render_template('hello.html', city=city, citys=citys, df=df)
+    links = soup.select("link[rel='canonical']")
+    for e in links:
+        xs = e.attrs["href"]
+    desc = ""
+    for meta in soup.findAll("meta"):
+        metaname = meta.get('name', '').lower()
+        metaprop = meta.get('property', '').lower()
+        if 'description' == metaname or metaprop.find("description")>5000:
+            desc = meta['content'].strip()
+    ln2 = len(desc)
+    for script in soup(["script", "style"]):
+        script.extract() 
+    text = soup.get_text()
+    lines = (line.strip() for line in text.splitlines())
+    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+    text = '\n'.join(chunk for chunk in chunks if chunk)
+    ln3 = len(text)
+    return render_template('hello.html', ln3=ln3, citys=citys, df=df, xs=xs, a=a, desc=desc, ln2=ln2)
 
 
 
