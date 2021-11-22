@@ -10,6 +10,7 @@ import os
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
 from flask import render_template
+import os.path, time, re
 
 # Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -26,6 +27,13 @@ def root():
     </form>
     """
 
+bullets = [
+    'テキスト1',
+    'テキスト2',
+    'テキスト3'
+]
+
+
 @app.route("/hello.html", methods=["post"])
 def hello():
     a = str(request.form.get("a"))
@@ -39,7 +47,10 @@ def hello():
     soup = BeautifulSoup(html.text, "html.parser")
     ps = soup.title.string
     city = str(ps)
-    return render_template('hello.html', city=city)
+    citys = "komama"
+    df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+    return render_template('hello.html', city=city, citys=citys, df=df)
+
 
 
 # サーバーを起動
