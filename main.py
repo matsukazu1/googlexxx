@@ -20,9 +20,9 @@ def root():
     # HTMLでWebフォームを記述 --- (*2)
     return """
     <html><body>
-    <form action="/hello.html" method="post">
+    <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a">
-      <input type="submit" value="計算">
+      <input type="submit" value="計算" target="_blank">
     </form>
     """
 
