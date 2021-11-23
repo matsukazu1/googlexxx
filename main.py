@@ -32,11 +32,6 @@ def root():
     </form>
     """
 
-bullets = [
-    'テキスト1',
-    'テキスト2',
-    'テキスト3'
-]
 
 
 @app.route("/hello.html", methods=["post"])
@@ -54,6 +49,29 @@ def hello():
     city = str(ps)
     citys = "komama"
     df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+    ganba = []
+    for htag in df:
+        if (r"<(h1|h2|h3|h4|h5|h6)"):
+            i = htag
+            i = str(i).replace('\n', "")
+            i = str(i).replace('\r\n', "")
+            i = str(i).replace('　', "")
+            i = str(i).replace(' ', "")
+            i = str(i).replace(' ', "")
+            df = str(i).replace(' ', "")
+            cd =  df.encode('cp932', "ignore")
+            po = cd.decode('cp932')
+            if "<h1" in po:
+                if "alt=" in po: 
+                    ganba.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                else:
+                    ganba.append("【h1】" + bleach.clean(str(po), strip=True))
+            elif "<h2" in po:
+                if "alt=" in po: 
+                    ganba.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                else:
+                    ganba.append("【h2】" + bleach.clean(str(po), strip=True))
+        else:None
     links = soup.select("link[rel='canonical']")
     for e in links:
         xs = e.attrs["href"]
@@ -71,7 +89,7 @@ def hello():
     chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
     text = '\n'.join(chunk for chunk in chunks if chunk)
     ln3 = len(text)
-    return render_template('hello.html', ln3=ln3, citys=citys, df=df, xs=xs, a=a, desc=desc, ln2=ln2)
+    return render_template('hello.html', ganba=ganba, ln3=ln3, citys=citys, df=df, xs=xs, a=a, desc=desc, ln2=ln2)
 
 
 

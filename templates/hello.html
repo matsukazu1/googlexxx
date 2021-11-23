@@ -8,6 +8,7 @@
 <body>
   <div class="container">
   <h1>サイト情報</h1>
+  <p class="lead">{{ ganba }}</p>
   <h2>対象URL</h2>
   <p class="lead">{{ a }}</p>
   <h2>canonicalタグ</h2>
@@ -18,7 +19,7 @@
   <h2>ページ内文字数</h2>
   <p class="lead">{{ ln3 }}</p>
   <h2>見出し要素</h2>
-  {% for bullet in df %}
+  {% for bullet in ganba %}
   <li>{{ bullet }}</li>
   {% endfor %}
 </div>
