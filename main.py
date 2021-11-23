@@ -71,6 +71,26 @@ def hello():
                     ganba.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
                 else:
                     ganba.append("【h2】" + bleach.clean(str(po), strip=True))
+            elif "<h3" in po:
+                if "alt=" in po: 
+                    ganba.append("【h3(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                else:
+                    ganba.append("【h3】" + bleach.clean(str(po), strip=True))
+            elif "<h4" in po:
+                if "alt=" in po: 
+                    ganba.append("【h4(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                else:
+                    ganba.append("【h4】" + bleach.clean(str(po), strip=True))
+            elif "<h5" in po:
+                if "alt=" in po: 
+                    ganba.append("【h5(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                else:
+                    ganba.append("【h5】" + bleach.clean(str(po), strip=True))
+            elif "<h6" in po:
+                if "alt=" in po: 
+                    ganba.append("【h6(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                else:
+                    ganba.append("【h6】" + bleach.clean(str(po), strip=True))
         else:None
     links = soup.select("link[rel='canonical']")
     for e in links:
