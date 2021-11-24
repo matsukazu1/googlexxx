@@ -95,20 +95,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    for ii in ganba:
-        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=30)
-        r.status_code
-        rs = r.text
-        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
-        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        xx2 = str(soupz.title.string)
-        xx = xx2
-        ganba2.append(str(xx))
-        #df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
-        #for htag in df:
-        #    ganba2.append(str(htag))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, ganba2=ganba2)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2)
 
 #いけた
 
