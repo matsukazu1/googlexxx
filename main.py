@@ -95,7 +95,17 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2)
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        xx2 = str(soupz.title.string)
+        xx = xx2
+        xn3.append(str(xx))
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3)
 
 #いけた
 
