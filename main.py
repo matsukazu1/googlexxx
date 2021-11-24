@@ -12,19 +12,6 @@ from flask import Flask, render_template
 from flask import render_template
 import os.path, time, re
 import bleach
-import bleach
-import requests
-import codecs
-from bs4 import BeautifulSoup
-import pandas as pd
-import numpy as np
-import urllib.parse
-import os.path, time, re
-import re
-import requests
-import pandas as pd
-import urllib.parse
-from bs4 import BeautifulSoup
 
 # Flaskオブジェクトの生成
 app = Flask(__name__)
