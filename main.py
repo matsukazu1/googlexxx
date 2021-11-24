@@ -97,7 +97,6 @@ def hello():
                     else:
                         xn3.append("【h1】" + bleach.clean(str(po), strip=True))
             else:None
-        xn.append(str(xx))
         #下をやってるよ
         #site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
         #r = requests.get(site_url, timeout=30)
