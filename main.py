@@ -103,23 +103,24 @@ def hello():
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
-    for htag in df:
-        if (r"<(h1|h2|h3|h4|h5|h6)"):
-            i = htag
-            i = str(i).replace('\n', "")
-            i = str(i).replace('\r\n', "")
-            i = str(i).replace('　', "")
-            i = str(i).replace(' ', "")
-            i = str(i).replace(' ', "")
-            df = str(i).replace(' ', "")
-            cd =  df.encode('cp932', "ignore")
-            po = cd.decode('cp932')
-            if "<h1" in po:
-                if "alt=" in po: 
-                    ganba2.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba2.append("【h1】" + bleach.clean(str(po), strip=True))
-        else:None
+        for htag in df:
+            ganba2.append(str(htag))
+            #if (r"<(h1|h2|h3|h4|h5|h6)"):
+            #    i = htag
+            #    i = str(i).replace('\n', "")
+            #    i = str(i).replace('\r\n', "")
+            #    i = str(i).replace('　', "")
+            #    i = str(i).replace(' ', "")
+            #    i = str(i).replace(' ', "")
+            #    df = str(i).replace(' ', "")
+            #    cd =  df.encode('cp932', "ignore")
+            #    po = cd.decode('cp932')
+            #    if "<h1" in po:
+            #        if "alt=" in po: 
+            #            ganba2.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+            #        else:
+            #            ganba2.append("【h1】" + bleach.clean(str(po), strip=True))
+            #else:None
     return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, ganba2=ganba2)
 
 #いけた
