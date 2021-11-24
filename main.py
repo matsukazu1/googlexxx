@@ -88,24 +88,7 @@ def hello():
         #rs = r.text
         #content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         #soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
-        for htag in df:
-            if (r"<(h1|h2|h3|h4|h5|h6)"):
-                i = htag
-                i = str(i).replace('\n', "")
-                i = str(i).replace('\r\n', "")
-                i = str(i).replace('　', "")
-                i = str(i).replace(' ', "")
-                i = str(i).replace(' ', "")
-                df = str(i).replace(' ', "")
-                cd =  df.encode('cp932', "ignore")
-                po = cd.decode('cp932')
-                if "<h1" in po:
-                    if "alt=" in po: 
-                        xn3.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                    else:
-                        xn3.append("【h1】" + bleach.clean(str(po), strip=True))
-            else:None
+        xn3.append(str(ii))
         #上をやってるよ
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
