@@ -88,7 +88,8 @@ def hello():
         #rs = r.text
         #content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         #soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        xn3.append(str(ii))
+        df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+        xn3.append(str(df))
         #上をやってるよ
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
