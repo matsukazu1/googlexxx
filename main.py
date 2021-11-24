@@ -96,7 +96,7 @@ def hello():
         xx = desc
         xn2.append(str(xx))
     for ii in ganba:
-        html = requests.get(ii)
+    #   html = requests.get(ii)
     #   html.encoding = html.apparent_encoding
         soup = BeautifulSoup(html.text, "html.parser")
     #   df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
