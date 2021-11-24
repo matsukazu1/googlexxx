@@ -82,12 +82,6 @@ def hello():
         xn.append(str(xx))
         #下をやってるよ
     for ii in ganba:
-        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=30)
-        r.status_code
-        rs = r.text
-        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
-        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         xx2 = str(soupz.title.string)
         xx = xx2
         xn3.append(str(xx))
