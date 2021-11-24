@@ -110,7 +110,6 @@ def hello():
         #rs = r.text
         #content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         #soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-
         #上をやってるよ
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
