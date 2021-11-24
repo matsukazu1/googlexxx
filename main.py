@@ -117,7 +117,7 @@ def hello():
     #                else:
     #                    ganba2.append("【h1】" + bleach.clean(str(po), strip=True))
     #        else:None
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, ganba2=ganba2)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2)
 
 #いけた
 
