@@ -99,7 +99,6 @@ def hello():
         html = requests.get(ii)
         html.encoding = html.apparent_encoding
         soup = BeautifulSoup(html.text, "html.parser")
-        df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
     return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, ganba2=ganba2)
 
 #いけた
