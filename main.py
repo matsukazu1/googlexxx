@@ -95,10 +95,6 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    for ii in ganba:
-        html = requests.get(ii)
-        html.encoding = html.apparent_encoding
-        soup = BeautifulSoup(html.text, "html.parser")
     return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, ganba2=ganba2)
 
 #いけた
