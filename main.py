@@ -79,6 +79,7 @@ def hello():
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         xx2 = str(soupz.title.string)
         xx = xx2
+        xn.append(str(xx))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
             if (r"<(h1|h2|h3|h4|h5|h6)"):
