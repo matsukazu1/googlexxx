@@ -95,7 +95,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    for ii in ganba:
+    #for ii in ganba:
     #   html = requests.get(ii)
     #   html.encoding = html.apparent_encoding
      #   soup = BeautifulSoup(html.text, "html.parser")
