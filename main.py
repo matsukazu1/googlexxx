@@ -12,6 +12,19 @@ from flask import Flask, render_template
 from flask import render_template
 import os.path, time, re
 import bleach
+import bleach
+import requests
+import codecs
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+import urllib.parse
+import os.path, time, re
+import re
+import requests
+import pandas as pd
+import urllib.parse
+from bs4 import BeautifulSoup
 
 # Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -28,7 +41,7 @@ def root():
     </<body>
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;">
-      <input type="submit" value="計算" target="_blank" style="width:100%;margin-top: 10px;">
+      <input type="submit" value="計算!!" target="_blank" style="width:100%;margin-top: 10px;">
     </form>
     """
 
@@ -36,82 +49,107 @@ def root():
 
 @app.route("/hello.html", methods=["post"])
 def hello():
-    a = str(request.form.get("a"))
-    url = a
-    # URLを開く
-    #html = urllib.request.urlopen(url)
-    # BeautifulSoupで開く
-    # r = BeautifulSoup(html, "html.parser")
-    html = requests.get(url)
-    html.encoding = html.apparent_encoding
-    soup = BeautifulSoup(html.text, "html.parser")
-    ps = soup.title.string
-    city = str(ps)
-    citys = "komama"
-    dfs = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+    numbers = 0
+    result = requests.get(f"https://www.google.co.jp/search?num=10&q=猫&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
+    soup = BeautifulSoup(result.text, 'html.parser')
+    link_google = soup.select('.kCrYT > a')
+    #print(link_google)
+     #for i in range(len(link_google)):
+      #print(link_google[i])
     ganba = []
-    for htag in dfs:
-        if (r"<(h1|h2|h3|h4|h5|h6)"):
-            i = htag
-            i = str(i).replace('\n', "")
-            i = str(i).replace('\r\n', "")
-            i = str(i).replace('　', "")
-            i = str(i).replace(' ', "")
-            i = str(i).replace(' ', "")
-            df = str(i).replace(' ', "")
-            cd =  df.encode('cp932', "ignore")
-            po = cd.decode('cp932')
-            if "<h1" in po:
-                if "alt=" in po: 
-                    ganba.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba.append("【h1】" + bleach.clean(str(po), strip=True))
-            elif "<h2" in po:
-                if "alt=" in po: 
-                    ganba.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba.append("【h2】" + bleach.clean(str(po), strip=True))
-            elif "<h3" in po:
-                if "alt=" in po: 
-                    ganba.append("【h3(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba.append("【h3】" + bleach.clean(str(po), strip=True))
-            elif "<h4" in po:
-                if "alt=" in po: 
-                    ganba.append("【h4(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba.append("【h4】" + bleach.clean(str(po), strip=True))
-            elif "<h5" in po:
-                if "alt=" in po: 
-                    ganba.append("【h5(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba.append("【h5】" + bleach.clean(str(po), strip=True))
-            elif "<h6" in po:
-                if "alt=" in po: 
-                    ganba.append("【h6(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
-                else:
-                    ganba.append("【h6】" + bleach.clean(str(po), strip=True))
-        else:None
-    links = soup.select("link[rel='canonical']")
-    for e in links:
-        xs = e.attrs["href"]
-    desc = ""
-    for meta in soup.findAll("meta"):
-        metaname = meta.get('name', '').lower()
-        metaprop = meta.get('property', '').lower()
-        if 'description' == metaname or metaprop.find("description")>5000:
-            desc = meta['content'].strip()
-    ln2 = len(desc)
-    for script in soup(["script", "style"]):
-        script.extract() 
-    text = soup.get_text()
-    lines = (line.strip() for line in text.splitlines())
-    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-    text = '\n'.join(chunk for chunk in chunks if chunk)
-    ln3 = len(text)
-    return render_template('hello.html', ganba=ganba, ln3=ln3, citys=citys, df=df, xs=xs, a=a, desc=desc, ln2=ln2)
+    xs = []
+    xn = []
+    xn2 = []
+    ganba2 = []
+    for i in range(len(link_google)):
+        #なんか変な文字が入るので除く
+        site_url = link_google[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
+        #URLに日本語が含まれている場合、エンコードされているのでデコードする
+        numbers += 1
+        site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
+        ganba.append(str(site_url))
+    for ii in ganba:
+        r = requests.get(ii, timeout=30)
+        ii = str(r)
+        xs.append(str("【URL】:" + ii))
+        #xs.append(str("s"))
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        xx2 = str(soupz.title.string)
+        xx = xx2
+        xn.append(str(xx))
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        desc = ""
+        for meta in soup.findAll("meta"):
+            metaname = meta.get('name', '').lower()
+            metaprop = meta.get('property', '').lower()
+            if 'description' == metaname or metaprop.find("description")>5000:
+                desc = meta['content'].strip()
+        xx = desc
+        xn2.append(str(xx))
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        html = requests.get(site_url)
+        html.encoding = html.apparent_encoding
+        content_type_encoding = html.encoding if html.encoding != 'ISO-8859-1' else None
+        soup = BeautifulSoup(html.text, "html.parser", from_encoding=content_type_encoding)
+        df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+        for htag in df:
+            if (r"<(h1|h2|h3|h4|h5|h6)"):
+                i = htag
+                i = str(i).replace('\n', "")
+                i = str(i).replace('\r\n', "")
+                i = str(i).replace('　', "")
+                i = str(i).replace(' ', "")
+                i = str(i).replace(' ', "")
+                df = str(i).replace(' ', "")
+                cd =  df.encode('cp932', "ignore")
+                po = cd.decode('cp932')
+                if "<h1" in po:
+                    if "alt=" in po: 
+                        ganba2.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        ganba2.append("【h1】" + bleach.clean(str(po), strip=True))
+                elif "<h2" in po:
+                    if "alt=" in po: 
+                        ganba2.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        ganba2.append("【h2】" + bleach.clean(str(po), strip=True))
+                elif "<h3" in po:
+                    if "alt=" in po: 
+                        ganba2.append("【h3(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        ganba2.append("【h3】" + bleach.clean(str(po), strip=True))
+                elif "<h4" in po:
+                    if "alt=" in po: 
+                        ganba2.append("【h4(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        ganba2.append("【h4】" + bleach.clean(str(po), strip=True))
+                elif "<h5" in po:
+                    if "alt=" in po: 
+                        ganba2.append("【h5(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        ganba2.append("【h5】" + bleach.clean(str(po), strip=True))
+                elif "<h6" in po:
+                    if "alt=" in po: 
+                        ganba2.append("【h6(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        ganba2.append("【h6】" + bleach.clean(str(po), strip=True))
+            else:None
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, ganba2=ganba2)
 
-
+#いけた
 
 # サーバーを起動
 if __name__ == '__main__':

@@ -8,17 +8,22 @@
 <body>
   <div class="container">
   <h1>サイト情報</h1>
-  <h2>対象URL</h2>
-  <p class="lead">{{ a }}</p>
-  <h2>canonicalタグ</h2>
-  <p class="lead">{{ xs }}</p>
-  <h2>ディスクリプションタグ</h2>
-  <p class="lead">{{ desc }}</p>
-  <p class="lead">文字数：{{ ln2 }}</p>
-  <h2>ページ内文字数</h2>
-  <p class="lead">{{ ln3 }}</p>
+  <h2>対象UR!</h2>
+  {% for bullet in xs %}
+  <li>{{ bullet }}</li>
+  {% endfor %}
+  <h2>見出し要素</h2>
+  {% for bullet in xn %}
+  <li>{{ bullet }}</li>
+  {% endfor %}
+  {% for bullet in xn2 %}
+  <li>{{ bullet }}</li>
+  {% endfor %}
   <h2>見出し要素</h2>
   {% for bullet in ganba %}
+  <li>{{ bullet }}</li>
+  {% endfor %}
+  {% for bullet in ganba2 %}
   <li>{{ bullet }}</li>
   {% endfor %}
 </div>
