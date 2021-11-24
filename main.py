@@ -102,7 +102,9 @@ def hello():
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        ganba2 = str(soup)
+        xx2 = str(soup.title.string)
+        xx = xx2
+        ganba2.append(str(xx))
         #df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         #for htag in df:
         #    ganba2.append(str(htag))
