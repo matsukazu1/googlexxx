@@ -48,9 +48,9 @@ def hello():
     ps = soup.title.string
     city = str(ps)
     citys = "komama"
-    df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+    dfs = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
     ganba = []
-    for htag in df:
+    for htag in dfs:
         if (r"<(h1|h2|h3|h4|h5|h6)"):
             i = htag
             i = str(i).replace('\n', "")
