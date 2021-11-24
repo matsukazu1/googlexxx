@@ -79,8 +79,8 @@ def hello():
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         xx2 = str(soupz.title.string)
         xx = xx2
-        xn3.append(str(xx))
-        #上をやってるよ
+        xn.append(str(xx))
+        #下をやってるよ
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
         r = requests.get(site_url, timeout=30)
@@ -90,7 +90,8 @@ def hello():
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         xx2 = str(soupz.title.string)
         xx = xx2
-        xn.append(str(xx))
+        xn3.append(str(xx))
+        #上をやってるよ
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
         r = requests.get(site_url, timeout=30)
