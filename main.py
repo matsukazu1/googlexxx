@@ -97,6 +97,11 @@ def hello():
                         xn3.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
                     else:
                         xn3.append("【h1】" + bleach.clean(str(po), strip=True))
+                elif "<h2" in po:
+                    if "alt=" in po: 
+                        xn3.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        xn3.append("【h2】" + bleach.clean(str(po), strip=True))
             else:None
         #下をやってるよ
         #site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
