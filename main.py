@@ -57,7 +57,7 @@ def hello():
     xs = []
     xn = []
     xn2 = []
-    ganba2 = []
+    xn3 = []
     for i in range(len(link_google)):
         #なんか変な文字が入るので除く
         site_url = link_google[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
