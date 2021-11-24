@@ -96,8 +96,9 @@ def hello():
         xx = desc
         xn2.append(str(xx))
     for ii in ganba:
-        html = requests.get(ii).text
-        soup = BeautifulSoup(html, "html.parser")
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         df = soup.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
             if (r"<(h1|h2|h3|h4|h5|h6)"):
