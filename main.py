@@ -47,7 +47,8 @@ def hello():
     ganba = []
     xs = []
     xn = []
-    
+    xn2 = []
+    ganba2 = []
     for i in range(len(link_google)):
         #なんか変な文字が入るので除く
         site_url = link_google[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
@@ -70,7 +71,23 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn,)
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        desc = ""
+        for meta in soup.findAll("meta"):
+            metaname = meta.get('name', '').lower()
+            metaprop = meta.get('property', '').lower()
+            if 'description' == metaname or metaprop.find("description")>5000:
+                desc = meta['content'].strip()
+        xx = desc
+        xn2.append(str(xx))
+
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2)
 
 #いけた
 
