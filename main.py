@@ -91,8 +91,7 @@ def hello():
         ii = str(r)
         xs.append(str("【URL】:" + ii))
     for ii in ganba:
-        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=30)
+        r = requests.get(ii, timeout=30)
         r.status_code
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
