@@ -74,7 +74,7 @@ def hello():
             print(1)
         elif "wantedly.com" in str(i):
             print(1)
-        elif "newspicks.com" in str(i):
+        elif "dl001" in str(i):
             print(1)
         else:
             xx.append(i)
@@ -86,7 +86,26 @@ def hello():
         numbers += 1
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
         ganba.append(str(site_url))
-    return render_template('hello.html', link_google=link_google, ganba=ganba)
+    for ii in ganba:
+        r = requests.get(ii, timeout=30)
+        ii = str(r)
+        xs.append(str("【URL】:" + ii))
+        #xs.append(str("s"))
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        html = requests.get(site_url)
+        html.encoding = html.apparent_encoding
+        soup = BeautifulSoup(html.text, "html.parser")
+        ps = soup.title.string
+        for script in soup(["script", "style"]):
+            script.extract() 
+        text = soup.get_text()
+        lines = (line.strip() for line in text.splitlines())
+        chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+        text = '\n'.join(chunk for chunk in chunks if chunk)
+        xx = len(text)
+        xn.append(str(xx))
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs)
 
 #いけた
 
