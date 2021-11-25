@@ -99,7 +99,7 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xn=xn)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xn=xn, xs=xs)
 
 #いけた
 
