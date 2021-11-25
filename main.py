@@ -22,6 +22,7 @@ import re
 import requests
 import urllib.parse
 from bs4 import BeautifulSoup
+from flask import Markup
 
 # Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -47,7 +48,8 @@ def root():
 @app.route("/hello.html", methods=["post"])
 def hello():
     numbers = 0
-    result = requests.get(f"https://www.google.co.jp/search?num=10&q=猫&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
+    a = str(request.form.get("a"))
+    result = requests.get(f"https://www.google.co.jp/search?num=10&q=" + a + "&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
     soup = BeautifulSoup(result.text, 'html.parser')
     link_google = soup.select('.kCrYT > a')
     #print(link_google)
@@ -99,6 +101,7 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
+        xn3.append(Markup("<h3>みあし</h3>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
             if (r"<(h1|h2|h3|h4|h5|h6)"):
