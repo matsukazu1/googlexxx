@@ -58,9 +58,16 @@ def hello():
     xn = []
     xn2 = []
     xn3 = []
-    for i in range(len(link_google)):
+    xx =[]
+    for i in link_google:
+        if "youtube" in str(i):
+            print(1)
+        else:
+            xx.append(i)
+    print(xx)
+    for i in range(len(xx)):
         #なんか変な文字が入るので除く
-        site_url = link_google[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
+        site_url = xx[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
         #URLに日本語が含まれている場合、エンコードされているのでデコードする
         numbers += 1
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
