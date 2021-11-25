@@ -105,7 +105,7 @@ def hello():
         text = '\n'.join(chunk for chunk in chunks if chunk)
         xx = len(text)
         xn.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xn=xn)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs)
 
 #いけた
 
