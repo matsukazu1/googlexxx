@@ -92,10 +92,7 @@ def hello():
         xs.append(str("【URL】:" + ii))
     for ii in ganba:
         r = requests.get(ii, timeout=30)
-        r.status_code
-        rs = r.text
-        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
-        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        soupz = BeautifulSoup(r.content, 'html.parser')
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
