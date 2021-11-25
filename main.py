@@ -87,13 +87,13 @@ def hello():
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
         ganba.append(str(site_url))
     for ii in ganba:
-        r = requests.get(ii, timeout=30)
+        r = requests.get(ii)
         ii = str(r)
         xs.append(str("【URL】:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=30)
+        r = requests.get(site_url)
         r.status_code
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
@@ -127,7 +127,7 @@ def hello():
             else:None
         #下をやってるよ
         #site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        #r = requests.get(site_url, timeout=30)
+        #r = requests.get(site_url)
         #r.status_code
         #rs = r.text
         #content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
@@ -135,7 +135,7 @@ def hello():
         #上をやってるよ
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=30)
+        r = requests.get(site_url)
         r.status_code
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
