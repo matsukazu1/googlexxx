@@ -78,6 +78,8 @@ def hello():
             print(1)
         elif "rakuten" in str(i):
             print(1)
+        elif "yahoo.co.jp" in str(i):
+            print(1)
         else:
             xx.append(i)
     print(xx)
