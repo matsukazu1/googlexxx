@@ -64,6 +64,16 @@ def hello():
             print(1)
         elif "youtube.com" in str(i):
             print(1)
+        elif "amazon.co.jp" in str(i):
+            print(1)
+        elif "facebook.com" in str(i):
+            print(1)
+        elif "instagram.com" in str(i):
+            print(1)
+        elif "wantedly.com" in str(i):
+            print(1)
+        elif "newspicks.com" in str(i):
+            print(1)
         else:
             xx.append(i)
     print(xx)
