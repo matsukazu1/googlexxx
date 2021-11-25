@@ -93,10 +93,7 @@ def hello():
         #xs.append(str("s"))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=30)
-        r.status_code
-        rs = r.text
-        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        content_type_encoding = site_url.encoding if site_url.encoding != 'ISO-8859-1' else None
         soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         desc = ""
         for meta in soup.findAll("meta"):
