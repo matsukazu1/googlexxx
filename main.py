@@ -49,7 +49,7 @@ def root():
 def hello():
     numbers = 0
     a = str(request.form.get("a"))
-    result = requests.get(f"https://www.google.co.jp/search?num=30&q=" + a + "&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
+    result = requests.get(f"https://www.google.co.jp/search?num=10&q=" + a + "&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
     soup = BeautifulSoup(result.text, 'html.parser')
     link_google = soup.select('.kCrYT > a')
     #print(link_google)
@@ -74,7 +74,7 @@ def hello():
             print(1)
         elif "wantedly.com" in str(i):
             print(1)
-        elif "newspicks.com" in str(i):
+        elif ".aspx" in str(i):
             print(1)
         else:
             xx.append(i)
@@ -97,6 +97,48 @@ def hello():
         r.status_code
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        xx2 = str(soupz.title.string)
+        xx = xx2
+        xn.append(str(xx))
+        xn3.append(Markup("<h3>みあし</h3>"))
+        df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+        for htag in df:
+            if (r"<(h1|h2|h3|h4|h5|h6)"):
+                i = htag
+                i = str(i).replace('\n', "")
+                i = str(i).replace('\r\n', "")
+                i = str(i).replace('　', "")
+                i = str(i).replace(' ', "")
+                i = str(i).replace(' ', "")
+                df = str(i).replace(' ', "")
+                cd =  df.encode('cp932', "ignore")
+                po = cd.decode('cp932')
+                if "<h1" in po:
+                    if "alt=" in po: 
+                        xn3.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        xn3.append("【h1】" + bleach.clean(str(po), strip=True))
+                elif "<h2" in po:
+                    if "alt=" in po: 
+                        xn3.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        xn3.append("【h2】" + bleach.clean(str(po), strip=True))
+            else:None
+        #下をやってるよ
+        #site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        #r = requests.get(site_url, timeout=30)
+        #r.status_code
+        #rs = r.text
+        #content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        #soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        #上をやってるよ
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         desc = ""
         for meta in soup.findAll("meta"):
@@ -106,7 +148,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xn2=xn2, xn3=xn3)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3)
 
 #いけた
 
