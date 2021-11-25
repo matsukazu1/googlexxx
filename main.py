@@ -74,7 +74,7 @@ def hello():
             print(1)
         elif "wantedly.com" in str(i):
             print(1)
-        elif "aspx" in str(i):
+        elif "rakuten" in str(i):
             print(1)
         else:
             xx.append(i)
