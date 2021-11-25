@@ -86,7 +86,27 @@ def hello():
         numbers += 1
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
         ganba.append(str(site_url))
-    return render_template('hello.html', link_google=link_google, ganba=ganba)
+    for ii in ganba:
+        r = requests.get(ii, timeout=30)
+        ii = str(r)
+        xs.append(str("【URL】:" + ii))
+        #xs.append(str("s"))
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        desc = ""
+        for meta in soup.findAll("meta"):
+            metaname = meta.get('name', '').lower()
+            metaprop = meta.get('property', '').lower()
+            if 'description' == metaname or metaprop.find("description")>5000:
+                desc = meta['content'].strip()
+        xx = desc
+        xn2.append(str(xx))
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xn2=xn2)
 
 #いけた
 
