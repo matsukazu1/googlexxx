@@ -47,7 +47,7 @@ def root():
 @app.route("/hello.html", methods=["post"])
 def hello():
     numbers = 0
-    result = requests.get(f"https://www.google.co.jp/search?num=10&q=猫&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
+    result = requests.get(f"https://www.google.co.jp/search?num=30&q=猫&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
     soup = BeautifulSoup(result.text, 'html.parser')
     link_google = soup.select('.kCrYT > a')
     #print(link_google)
