@@ -86,6 +86,68 @@ def hello():
         numbers += 1
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
         ganba.append(str(site_url))
+    for ii in ganba:
+        r = requests.get(ii, timeout=30)
+        ii = str(r)
+        xs.append(str("【URL】:" + ii))
+        #xs.append(str("s"))
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        xx2 = str(soupz.title.string)
+        xx = xx2
+        xn.append(str(xx))
+        xn3.append(Markup("<h3>みあし</h3>"))
+        df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
+        for htag in df:
+            if (r"<(h1|h2|h3|h4|h5|h6)"):
+                i = htag
+                i = str(i).replace('\n', "")
+                i = str(i).replace('\r\n', "")
+                i = str(i).replace('　', "")
+                i = str(i).replace(' ', "")
+                i = str(i).replace(' ', "")
+                df = str(i).replace(' ', "")
+                cd =  df.encode('cp932', "ignore")
+                po = cd.decode('cp932')
+                if "<h1" in po:
+                    if "alt=" in po: 
+                        xn3.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        xn3.append("【h1】" + bleach.clean(str(po), strip=True))
+                elif "<h2" in po:
+                    if "alt=" in po: 
+                        xn3.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                    else:
+                        xn3.append("【h2】" + bleach.clean(str(po), strip=True))
+            else:None
+        #下をやってるよ
+        #site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        #r = requests.get(site_url, timeout=30)
+        #r.status_code
+        #rs = r.text
+        #content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        #soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        #上をやってるよ
+    for ii in ganba:
+        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
+        r = requests.get(site_url, timeout=30)
+        r.status_code
+        rs = r.text
+        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
+        soup = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        desc = ""
+        for meta in soup.findAll("meta"):
+            metaname = meta.get('name', '').lower()
+            metaprop = meta.get('property', '').lower()
+            if 'description' == metaname or metaprop.find("description")>5000:
+                desc = meta['content'].strip()
+        xx = desc
+        xn2.append(str(xx))
     return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3)
 
 #いけた
