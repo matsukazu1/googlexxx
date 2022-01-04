@@ -125,14 +125,14 @@ def hello():
                 po = cd.decode('cp932')
                 if "<h1" in po:
                     if "alt=" in po: 
-                        xn3.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                        xn3.append("【h1(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group()) + append(Markup("<br>"))
                     else:
-                        xn3.append("【h1】" + bleach.clean(str(po), strip=True))
+                        xn3.append("【h1】" + bleach.clean(str(po), strip=True)) + append(Markup("<br>"))
                 elif "<h2" in po:
                     if "alt=" in po: 
-                        xn3.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group())
+                        xn3.append("【h2(alt)】" + re.search('(?<=alt=").*(?=\")', (po)).group()) + append(Markup("<br>"))
                     else:
-                        xn3.append("【h2】" + bleach.clean(str(po), strip=True))
+                        xn3.append("【h2】" + bleach.clean(str(po), strip=True)) + append(Markup("<br>"))
             else:None
         xn3.append(Markup("</td>"))
         #下をやってるよ
