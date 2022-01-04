@@ -110,7 +110,7 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
-        xn3.append(Markup("<h3>みあし,</h3><td>"))
+        xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
             if (r"<(h1|h2|h3|h4|h5|h6)"):
