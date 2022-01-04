@@ -1,20 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <title>flask練習</title>
+  <title>python</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <style type="text/css">
     td {
-    max-width: 300px;
-    vertical-align: baseline;
-    border: solid;
+border: solid;
+    width: 300px !important;
+    word-wrap: break-word; 　　/* IEやFirefox対応用 */
+    overflow-wrap: break-word;
 }
 th {
-    display: block;
     width: 150px;
 }
+table{
+table-layout: fixed;
+}
   </style>
+}
 </head>
 <body>
   <div class="container">
@@ -22,7 +26,13 @@ th {
   <p>{{ ln3 }}</p>
 <table class="table table-dark">
 <tr>
-  <th>ステータスコード</th>
+  <th>URL</th>
+  {% for bullet in ganba %}
+  <td>{{ bullet }}</td>
+  {% endfor %}
+</tr>
+<tr>
+  <th>ステータス</th>
   {% for bullet in xs %}
   <td>{{ bullet }}</td>
   {% endfor %}
@@ -36,12 +46,6 @@ th {
 <tr>
   <th>ディスクリプション</th>
   {% for bullet in xn2 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>URL</th>
-  {% for bullet in ganba %}
   <td>{{ bullet }}</td>
   {% endfor %}
 </tr>
