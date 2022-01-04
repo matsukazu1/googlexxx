@@ -7,28 +7,50 @@
 </head>
 <body>
   <div class="container">
-  <h1>サイト情報、</h1>
-  <p>{{ ln3 }}</p>
-  <h2>ステータスコード</h2>
+<table>
+  <tr>
+  <td>サイト情報</td>
+  <td>{{ ln3 }}</td>
+  </tr>
+  <tr>
+  <td>ステータスコード</td>
   {% for bullet in xs %}
-  <p>{{ bullet }}</p>
+  <td>{{ bullet }}</td>
   {% endfor %}
-  <h2>タイトル</h2>
+</tr>
+<tr>
+  <td>タイトル</td>
   {% for bullet in xn %}
-  <p>{{ bullet }}</p>
+</tr>
+  <tr>
+  <td>{{ bullet }}</td>
   {% endfor %}
-  <h2>ディスクリプション</h2>
+</tr>
+<tr>
+  <td>ディスクリプション</td>
   {% for bullet in xn2 %}
-  <p>{{ bullet }}</p>
+</tr>
+<tr>
+  <td>{{ bullet }}</td>
   {% endfor %}
-  <h2>URL</h2>
+</tr>
+<tr>
+  <td>URL</td>
   {% for bullet in ganba %}
-  <p>{{ bullet }}</p>
+</tr>
+<tr>
+  <td>{{ bullet }}</td>
   {% endfor %}
-  <h2>見出し</h2>
+</tr>
+<tr>
+  <td>見出し</td>
   {% for bullet in xn3 %}
-  <p>{{ bullet }}</p>
+</tr>
+<tr>
+  <td>{{ bullet }}</td>
   {% endfor %}
+</tr>
+</table>
 </div>
 </body>
 </html>
