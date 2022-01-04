@@ -4,12 +4,23 @@
   <title>flask練習</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style type="text/css">
+    td {
+    max-width: 300px;
+    vertical-align: baseline;
+    border: solid;
+}
+th {
+    display: block;
+    width: 150px;
+}
+  </style>
 </head>
 <body>
   <div class="container">
   <h1>サイト情報</h1>
   <p>{{ ln3 }}</p>
-<table>
+<table class="table table-dark">
 <tr>
   <th>ステータスコード</th>
   {% for bullet in xs %}
