@@ -17,79 +17,7 @@ th {
 table{
 table-layout: fixed;
 }
-#nowLoading {
-  display: table;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  opacity: 0.8;
-}
- 
-#innerMsg {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  padding-top: 140px;
-  z-index:100;
-  background: url("表示するくるくる画像のURL]") center center no-repeat;
-}
   </style>
-<script type="text/javascript">
-/* ------------------------------
- 非同期処理を実行する関数
- ------------------------------ */
-function asyncFunc() {  
-    // Loading 画像を表示
-    dispLoading("処理中...");
-   
-    // 非同期処理(例)
-    $.ajax({
-      async : true,
-      url : "http://xxx.com/yyy/zzz",
-      type:"GET",
-      dataType:"json"
-    })
-    // 通信成功時
-    .done(function(data) {
-      alert("成功しました");
-    })
-    // 通信失敗時
-    .fail( function(data) {
-      alert("失敗しました");
-    })
-    // 処理終了時
-    .always( function(data) {
-      // Loading 画像を消す
-      removeLoading();
-    });  
-}  
-    
-/* ------------------------------
- 表示用の関数
- ------------------------------ */
-function dispLoading(msg){
-  // 引数なしの場合、メッセージは非表示。
-  if(msg === undefined ) msg = "";
-  
-  // 画面表示メッセージを埋め込み
-  var innerMsg = "<div id='innerMsg'>" + msg + "</div>";  
-  
-  // ローディング画像が非表示かどうかチェックし、非表示の場合のみ出力。
-  if($("#nowLoading").length == 0){
-    $("body").append("<div id='nowLoading'>" + innerMsg + "</div>");
-  }
-}
- 
-/* ------------------------------
- 表示ストップ用の関数
- ------------------------------ */
-function removeLoading(){
-  $("#nowLoading").remove();
-}  
-</script>>
 </head>
 <body>
   <div class="container">
