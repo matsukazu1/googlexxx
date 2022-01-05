@@ -40,12 +40,7 @@ def root():
     <html>
     <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-<script type="text/javascript">// <![CDATA[
-        function loading(){
-            $("#loading").show();
-            $("#content").hide();       
-        }
-// ]]></script>
+
 <style>
 div#loading {
     width: 35px;
@@ -56,7 +51,13 @@ div#loading {
     }
 </style>
     </head>
-    </<body>
+    <body>
+<script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();       
+        }
+// ]]></script>
         <div id="loading"></div>
     <div id="content">
     <form action="/hello.html" method="post" target="_blank" >
@@ -64,6 +65,7 @@ div#loading {
       <input type="submit" name="anything_submit" value="Submit" onclick="loading();">
     </form>
     </div>
+    </body>
     """
 
 
