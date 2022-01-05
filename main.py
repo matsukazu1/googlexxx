@@ -40,31 +40,12 @@ def root():
     <html>
     <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<style>
-div#loading {
-    width: 35px;
-    height: 35px;
-    display: none;
-    background-color: skyblue;
-    cursor: wait;
-    }
-</style>
     </head>
-    <body>
-<script type="text/javascript">
-        function loading(){
-            $("#loading").show();
-            $("#content").hide();
-        }</script>
-    <div id="loading"></div>
-    <div id="content">
+    </<body>
     <form action="/hello.html" method="post" target="_blank" >
-      <input type="text" name="a" style="width:100%;" placeholder="Type anything here">
-      <input type="submit" name="a" value="Submit" onclick="loading();">
+      <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
+      <input type="submit" value="計算!!" target="_blank" style="width:100%;margin-top: 10px;">
     </form>
-    </div>
-    </body>
     """
 
 
