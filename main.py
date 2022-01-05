@@ -40,12 +40,30 @@ def root():
     <html>
     <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+<script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();       
+        }
+// ]]></script>
+<style>
+div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url(/static/loadingimage.gif) no-repeat;
+    cursor: wait;
+    }
+</style>
     </head>
     </<body>
+        <div id="loading"></div>
+    <div id="content">
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;">
-      <input type="submit" value="計算!!" target="_blank" style="width:100%;margin-top: 10px;">
+      <input type="submit" name="anything_submit" value="Submit" onclick="loading();">
     </form>
+    </div>
     """
 
 
