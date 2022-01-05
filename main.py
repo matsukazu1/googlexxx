@@ -51,7 +51,7 @@ div#loading {
     width: 35px;
     height: 35px;
     display: none;
-    background: url(/static/loadingimage.gif) no-repeat;
+    background: url(https://kobijutu-hirota.jp/wp/wordpress2/wp-content/uploads/2018/11/line2.jpg) no-repeat;
     cursor: wait;
     }
 </style>
