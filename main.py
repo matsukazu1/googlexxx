@@ -46,19 +46,18 @@ div#loading {
     width: 35px;
     height: 35px;
     display: none;
-    background: url(https://kobijutu-hirota.jp/wp/wordpress2/wp-content/uploads/2018/11/line2.jpg) no-repeat;
+    background-color: skyblue;
     cursor: wait;
     }
 </style>
     </head>
     <body>
-<script type="text/javascript">// <![CDATA[
+<script type="text/javascript">
         function loading(){
             $("#loading").show();
             $("#content").hide();
-        }
-// ]]></script>
-        <div id="loading"></div>
+        }</script>
+    <div id="loading"></div>
     <div id="content">
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;" placeholder="Type anything here">
