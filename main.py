@@ -40,32 +40,12 @@ def root():
     <html>
     <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<style>
-div#loading {
-    width: 35px;
-    height: 35px;
-    display: none;
-    background: url(https://kobijutu-hirota.jp/wp/wordpress2/wp-content/uploads/2018/11/line2.jpg) no-repeat;
-    cursor: wait;
-    }
-</style>
     </head>
-    <body>
-<script type="text/javascript">// <![CDATA[
-        function loading(){
-            $("#loading").show();
-            $("#content").hide();       
-        }
-// ]]></script>
-        <div id="loading"></div>
-    <div id="content">
+    </<body>
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;">
-      <input type="submit" name="anything_submit" value="Submit" onclick="loading();">
+      <input type="submit" value="計算!!" target="_blank" style="width:100%;margin-top: 10px;">
     </form>
-    </div>
-    </body>
     """
 
 
