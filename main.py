@@ -42,10 +42,11 @@ def root():
     <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     </<body>
+    <h1>競合要素取得</h1>
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
       <input type="submit" value="検索" target="_blank" style="width:100%;margin-top: 10px;">
-    </form><br><p>読み込みに30秒～1分かかります。</p>
+    </form><br><p style="color: red;">読み込みに30秒～1分かかります。</p>
     """
 
 
