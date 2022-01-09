@@ -44,8 +44,8 @@ def root():
     </<body>
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
-      <input type="submit" value="計算!!" target="_blank" style="width:100%;margin-top: 10px;">
-    </form>
+      <input type="submit" value="検索" target="_blank" style="width:100%;margin-top: 10px;">
+    </form><br><p>読み込みに30秒～1分かかります。</p>
     """
 
 
