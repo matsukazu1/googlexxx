@@ -46,7 +46,7 @@ def root():
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
       <input type="submit" value="検索" target="_blank" style="width:100%;margin-top: 10px;">
-    </form><p style="color: red;">読み込みに30秒～1分かかります。</p>
+    </form><p style="color: red;">読み込みに～1分かかります。<br>「Application error」が出たらもう一度検索を押すか別KWで検索してください。</p>
     """
 
 
