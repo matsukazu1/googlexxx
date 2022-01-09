@@ -52,7 +52,6 @@ def root():
 
 @app.route("/hello.html", methods=["post"])
 def hello():
-    xn3.append(Markup("<p>あああ</p>"))
     numbers = 0
     a = str(request.form.get("a"))
     result = requests.get(f"https://www.google.co.jp/search?num=10&q=" + a + "&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
