@@ -52,6 +52,17 @@ def root():
 
 @app.route("/hello.html", methods=["post"])
 def hello():
+    return """
+    <html>
+    <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    </<body>
+    <form action="/hello.html" method="post" target="_blank" >
+      <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
+      <input type="submit" value="計算!!" target="_blank" style="width:100%;margin-top: 10px;">
+    </form>
+    """
     numbers = 0
     a = str(request.form.get("a"))
     result = requests.get(f"https://www.google.co.jp/search?num=10&q=" + a + "&source=lnt&tbs=lr:lang_1ja&lr=lang_ja&sa=X&ved=2ahUKEwi1mO2n4qvpAhVMHaYKHUhYBfMQpwV6BAgOEBk&biw=1536&bih=674")
