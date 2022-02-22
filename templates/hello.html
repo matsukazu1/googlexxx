@@ -49,6 +49,12 @@ table-layout: fixed;
   {% endfor %}
 </tr>
 <tr>
+  <th>robots</th>
+  {% for bullet in xn12 %}
+  <td>{{ bullet }}</td>
+  {% endfor %}
+</tr>
+<tr>
   <th>タイトル</th>
   {% for bullet in xn %}
   <td>{{ bullet }}</td>
@@ -93,12 +99,6 @@ table-layout: fixed;
 <tr>
   <th>ogp:description</th>
   {% for bullet in xn10 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>ogp:site_name</th>
-  {% for bullet in xn12 %}
   <td>{{ bullet }}</td>
   {% endfor %}
 </tr>
