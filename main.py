@@ -100,7 +100,7 @@ def hello():
     for ii in ganba:
         r = requests.get(ii, timeout=59)
         ii = str(r)
-        xs.append(str("【URL】:" + ii))
+        xs.append(str("■:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
@@ -112,7 +112,7 @@ def hello():
         links = soupz.select("link[rel='canonical']")
         for e in links:
             xx = e.attrs["href"]
-            xn4.append(str("【URL】:" + xx))
+            xn4.append(str("【URL】:"))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
