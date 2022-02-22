@@ -100,6 +100,7 @@ def hello():
         r = requests.get(ii, timeout=59)
         ii = str(r)
         xs.append(str("【URL】:" + ii))
+        xn4.append(str("【URL】:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
@@ -110,7 +111,6 @@ def hello():
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         xx2 = str(soupz.title.string)
         xx = xx2
-        xn4.append(str(xx))
         xn.append(str(xx))
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
