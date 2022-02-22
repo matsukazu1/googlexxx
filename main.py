@@ -111,11 +111,11 @@ def hello():
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        #カノニカルs
-        links = soupz.select("meta[property='og:url']")
+        #カノニカル
+        links = soupz.select("link[rel='canonical']")
         xxy = "なし"
         for e in links:
-            xxy = e.attrs["content"]
+            xxy = e.attrs["href"]
         xn4.append(str(xxy))
         #オルタネート
         links2 = soupz.select("link[rel='alternate']")
@@ -124,6 +124,11 @@ def hello():
             xxy2 = e2.attrs["href"]
         xn5.append(str(xxy2))
         #練習
+        links3 = soupz.select("meta[property='og:url']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["href"]
+        xn6.append(str(xxy3))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
