@@ -115,8 +115,7 @@ def hello():
        links = soupz.select("link[rel='canonical']")
        for e in links:
            xx = e.attrs["href"]
-       xnx.append(str(xx))
-       #xnx = str(xx)        
+       xnx = str(xx)        
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
         r = requests.get(site_url, timeout=59)
