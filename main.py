@@ -99,7 +99,7 @@ def hello():
     for ii in ganba:
         r = requests.get(ii, timeout=59)
         ii = str(r)
-        xs.append(str("【URL】:" + ii))
+        #xs.append(str("【URL】:" + ii))
         xn4.append(str("【URL】:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
