@@ -115,7 +115,7 @@ def hello():
         links = soupz.select("link[rel='canonical']")
         for ez in links: print(ez.attrs["href"])
         print(ez.attrs["href"])
-        cano.append(str(ez))
+        cano.append(str(ez.attrs["href"]))
 
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
