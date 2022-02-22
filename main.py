@@ -115,7 +115,7 @@ def hello():
         for e in links:
             xxx = e.attrs["href"]
         xnx = str(xxx)
-        xnx.append(xnx)
+        xnx.append(str(xnx))
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
