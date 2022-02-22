@@ -114,8 +114,8 @@ def hello():
         links = soupz.select("link[rel='canonical']")
         for e in links:
             xxx = e.attrs["href"]
-        xnx = str(xxx)
-        xnx.append(str(xnx))
+        xnx2 = str(xxx)
+        xnx.append(xnx2)
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
