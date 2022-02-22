@@ -67,6 +67,7 @@ def hello():
     xn2 = []
     xn3 = []
     xn4 = []
+    xn5 = []
     xx =[]
     for i in link_google:
         if "twitter.com" in str(i):
@@ -113,7 +114,12 @@ def hello():
         xxy = "なし"
         for e in links:
             xxy = e.attrs["href"]
-        xn4.append(str(xxy))
+        xn4.append(str("【URL】:" + xxy))
+        links2 = soupz.select("link[rel='alternate']")
+        xxy2 = "なし"
+        for e2 in links2:
+            xxy2 = e2.attrs["href"]
+        xn5.append(str("【URL】:" + xxy2))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
@@ -169,7 +175,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3, xn4=xn4)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3, xn4=xn4, xn5=xn5)
 
 #いけた
 
