@@ -147,6 +147,16 @@ def hello():
         for e3 in links3:
             xxy3 = e3.attrs["content"]
         xn9.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:description']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn10.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:site_name']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn10.append(str(xxy3))
 
         xx2 = str(soupz.title.string)
         xx = xx2
