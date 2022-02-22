@@ -109,11 +109,11 @@ def hello():
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         links = soupz.select("link[rel='canonical']")
-        for e in links:
-            xxx = e.attrs["href"]
-        xnx = str(xxx)  
+        #for e in links:
+        #    xxx = e.attrs["href"]
+        #xnx = str(xxx)  
         #maaa = str(xxx)
-        #xnx.append(xnx)
+        xnx.append(str(links))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
         r = requests.get(site_url, timeout=59)
