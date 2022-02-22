@@ -111,12 +111,6 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
-
-        links = soupz.select("link[rel='canonical']")
-        for e in links: print(e.attrs["href"])
-        print(e.attrs["href"])
-        cano.append(str(e))
-
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
@@ -169,7 +163,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3, cano=cano)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3)
 
 #いけた
 
