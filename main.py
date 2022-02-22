@@ -110,10 +110,8 @@ def hello():
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         links = soupz.select("link[rel='canonical']")
         for e in links:
-            xxx = e.attrs["href"]
-            xnx.append(str(xxx))
-        #xnx = str(xxx)  
-        #maaa = str(xxx)
+            xx = e.attrs["href"]
+        xnx = str(xx)
         
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
