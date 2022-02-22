@@ -99,7 +99,7 @@ def hello():
     for ii in ganba:
         r = requests.get(ii, timeout=59)
         ii = str(r)
-        #xs.append(str("【URL】:" + ii))
+        xs.append(str("【URL】:" + ii))
         xn4.append(str("【URL】:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
@@ -164,7 +164,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn4=xn4, xn3=xn3)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3, xn4=xn4)
 
 #いけた
 
