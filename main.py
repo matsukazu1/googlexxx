@@ -110,9 +110,10 @@ def hello():
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         links = soupz.select("link[rel='canonical']")
+        xxy = "なし"
         for e in links:
-            xx = e.attrs["href"]
-        xn4.append(str("【URL】:" + xx))
+            xxy = e.attrs["href"]
+        xn4.append(str("【URL】:" + xxy))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
