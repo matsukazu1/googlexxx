@@ -111,11 +111,11 @@ def hello():
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        #カノニカル
-        links = soupz.select("link[rel='canonical']")
+        #カノニカルs
+        links = soupz.select("meta[property='og:url']")
         xxy = "なし"
         for e in links:
-            xxy = e.attrs["href"]
+            xxy = e.attrs["content"]
         xn4.append(str(xxy))
         #オルタネート
         links2 = soupz.select("link[rel='alternate']")
