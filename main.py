@@ -108,13 +108,10 @@ def hello():
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        links = soupz.select("link[rel='canonical']")
-        for ez in links: print(ez.attrs["href"])
-        print(ez.attrs["href"])
-        cano.append(str(ez.attrs["href"]))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
+
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
