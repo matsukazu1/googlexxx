@@ -72,6 +72,8 @@ def hello():
     xn7 = []
     xn8 = []
     xn9 = []
+    xn10 = []
+    xn11 = []
     xx =[]
     for i in link_google:
         if "twitter.com" in str(i):
