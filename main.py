@@ -69,6 +69,9 @@ def hello():
     xn4 = []
     xn5 = []
     xn6 = []
+    xn7 = []
+    xn8 = []
+    xn9 = []
     xx =[]
     for i in link_google:
         if "twitter.com" in str(i):
@@ -133,17 +136,17 @@ def hello():
         xxy3 = "なし"
         for e3 in links3:
             xxy3 = e3.attrs["content"]
-        xn6.append(str(xxy3))
+        xn7.append(str(xxy3))
         links3 = soupz.select("meta[property='og:title']")
         xxy3 = "なし"
         for e3 in links3:
             xxy3 = e3.attrs["content"]
-        xn6.append(str(xxy3))
+        xn8.append(str(xxy3))
         links3 = soupz.select("meta[property='og:image']")
         xxy3 = "なし"
         for e3 in links3:
             xxy3 = e3.attrs["content"]
-        xn6.append(str(xxy3))
+        xn9.append(str(xxy3))
 
         xx2 = str(soupz.title.string)
         xx = xx2
@@ -200,7 +203,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3, xn4=xn4, xn5=xn5, xn6=xn6)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3, xn4=xn4, xn5=xn5, xn6=xn6, xn7=xn7, xn8=xn8, xn9=xn9)
 
 #いけた
 
