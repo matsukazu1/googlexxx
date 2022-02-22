@@ -112,7 +112,7 @@ def hello():
         links = soupz.select("link[rel='canonical']")
         for e in links:
             xx = e.attrs["href"]
-            xn4.append(str("【URL】:"))
+        xn4.append(str("【URL】:"))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
