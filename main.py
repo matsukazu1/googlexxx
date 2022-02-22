@@ -110,6 +110,7 @@ def hello():
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
         xx2 = str(soupz.title.string)
         xx = xx2
+        xn4.append(str(xx))
         xn.append(str(xx))
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
@@ -163,7 +164,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn4=xn4, xn3=xn3)
 
 #いけた
 
