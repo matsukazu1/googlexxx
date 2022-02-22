@@ -66,6 +66,7 @@ def hello():
     xn = []
     xn2 = []
     xn3 = []
+    xn4 = []
     xx =[]
     for i in link_google:
         if "twitter.com" in str(i):
@@ -100,7 +101,6 @@ def hello():
         r = requests.get(ii, timeout=59)
         ii = str(r)
         xs.append(str("【URL】:" + ii))
-        xn4.append(str("【URL】:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
@@ -109,6 +109,10 @@ def hello():
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        links = soupz.select("link[rel='canonical']")
+        for e in links:
+            xx = e.attrs["href"]
+        xn4.append(str(xx))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
