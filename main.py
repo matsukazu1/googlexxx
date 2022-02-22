@@ -113,7 +113,7 @@ def hello():
         xxy = "なし"
         for e in links:
             xxy = e.attrs["href"]
-        xn4.append(str("【URL】:" + xxy))
+        xn4.append(str(xxy))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))

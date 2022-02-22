@@ -31,6 +31,12 @@ table-layout: fixed;
   {% endfor %}
 </tr>
 <tr>
+  <th>カノニカルURL</th>
+  {% for bullet in xn4 %}
+  <td>{{ bullet }}</td>
+  {% endfor %}
+</tr>
+<tr>
   <th>ステータス</th>
   {% for bullet in xs %}
   <td>{{ bullet }}</td>
@@ -45,12 +51,6 @@ table-layout: fixed;
 <tr>
   <th>ディスクリプション</th>
   {% for bullet in xn2 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>canonical</th>
-  {% for bullet in xn4 %}
   <td>{{ bullet }}</td>
   {% endfor %}
 </tr>
