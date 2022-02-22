@@ -100,23 +100,7 @@ def hello():
         r = requests.get(ii, timeout=59)
         ii = str(r)
         xs.append(str("【URL】:" + ii))
-        #xs.append(str("s"))
-    for ii in ganba:
-        site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
-        r = requests.get(site_url, timeout=59)
-        r.status_code
-        rs = r.text
-        content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
-        soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
-        #links = soupz.select("link[rel='canonical']")
-        #for e in links:
-        #    xx = e.attrs["href"]
-        #xnx = str(xx)
-        #links = soupz.select("link[rel='canonical']")
-        #xn4.append(str("links"))   
-        xxxx = str(soupz.title.string)
-        xx = xxxx
-        xn4.append(str(xx))        
+        #xs.append(str("s"))    
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
         r = requests.get(site_url, timeout=59)
@@ -127,6 +111,7 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
+        xn4.append(str(xx))
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
