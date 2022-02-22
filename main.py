@@ -114,12 +114,12 @@ def hello():
         xxy = "なし"
         for e in links:
             xxy = e.attrs["href"]
-        xn4.append(str("【URL】:" + xxy))
+        xn4.append(str(xxy))
         links2 = soupz.select("link[rel='alternate']")
         xxy2 = "なし"
         for e2 in links2:
             xxy2 = e2.attrs["href"]
-        xn5.append(str("【URL】:" + xxy2))
+        xn5.append(str(xxy2))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
