@@ -104,6 +104,7 @@ def hello():
         site_url = xx[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
         #URLに日本語が含まれている場合、エンコードされているのでデコードする
         numbers += 1
+        suuji.append(numbers)
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
         ganba.append(str(site_url))
     for ii in ganba:
@@ -169,7 +170,6 @@ def hello():
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
-        suuji.append(numbers)
         xn3.append(Markup("<td>"))
         df = soupz.find_all(re.compile("^h1|h2|h3|h4|h5|h6"))
         for htag in df:
