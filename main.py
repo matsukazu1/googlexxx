@@ -197,6 +197,13 @@ def hello():
                     else:
                         xn3.append("【h2】" + bleach.clean(str(po), strip=True))
                         xn3.append(Markup("<br>"))
+                elif "<h3" in po:
+                    if "alt=" in po: 
+                        xn3.append("【h3(alt)】" + re.search('(?<=alt=").*?(?=\")', (po)).group())
+                        xn3.append(Markup("<br>"))
+                    else:
+                        xn3.append("【h3】" + bleach.clean(str(po), strip=True))
+                        xn3.append(Markup("<br>"))
             else:None
         xn3.append(Markup("</td>"))
         #下をやってるよ
