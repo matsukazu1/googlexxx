@@ -66,6 +66,16 @@ def hello():
     xn = []
     xn2 = []
     xn3 = []
+    xn4 = []
+    xn5 = []
+    xn6 = []
+    xn7 = []
+    xn8 = []
+    xn9 = []
+    xn10 = []
+    xn11 = []
+    xn12 = []
+    suuji = []
     xx =[]
     for i in link_google:
         if "twitter.com" in str(i):
@@ -94,12 +104,13 @@ def hello():
         site_url = xx[i].get('href').split('&sa=U&')[0].replace('/url?q=', '')
         #URLに日本語が含まれている場合、エンコードされているのでデコードする
         numbers += 1
+        suuji.append(numbers)
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
         ganba.append(str(site_url))
     for ii in ganba:
         r = requests.get(ii, timeout=59)
         ii = str(r)
-        xs.append(str("【URL】:" + ii))
+        xs.append(str("■:" + ii))
         #xs.append(str("s"))
     for ii in ganba:
         site_url = urllib.parse.unquote(urllib.parse.unquote(ii))
@@ -108,6 +119,54 @@ def hello():
         rs = r.text
         content_type_encoding = r.encoding if r.encoding != 'ISO-8859-1' else None
         soupz = BeautifulSoup(r.content, 'html.parser', from_encoding=content_type_encoding)
+        #カノニカル
+        links = soupz.select("link[rel='canonical']")
+        xxy = "なし"
+        for e in links:
+            xxy = e.attrs["href"]
+        xn4.append(str(xxy))
+        #オルタネート
+        links2 = soupz.select("link[rel='alternate']")
+        xxy2 = "なし"
+        for e2 in links2:
+            xxy2 = e2.attrs["href"]
+        xn5.append(str(xxy2))
+        #練習
+        links3 = soupz.select("meta[property='og:url']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn6.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:type']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn7.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:title']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn8.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:image']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn9.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:description']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn10.append(str(xxy3))
+        links3 = soupz.select("meta[property='og:site_name']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn11.append(str(xxy3))
+        links3 = soupz.select("meta[name='robots']")
+        xxy3 = "なし"
+        for e3 in links3:
+            xxy3 = e3.attrs["content"]
+        xn12.append(str(xxy3))
         xx2 = str(soupz.title.string)
         xx = xx2
         xn.append(str(xx))
@@ -163,7 +222,7 @@ def hello():
                 desc = meta['content'].strip()
         xx = desc
         xn2.append(str(xx))
-    return render_template('hello.html', link_google=link_google, ganba=ganba, xs=xs, xn=xn, xn2=xn2, xn3=xn3)
+    return render_template('hello.html', link_google=link_google, ganba=ganba, suuji=suuji, xs=xs, xn=xn, xn2=xn2, xn3=xn3, xn4=xn4, xn5=xn5, xn6=xn6, xn7=xn7, xn8=xn8, xn9=xn9, xn10=xn10, xn11=xn11, xn12=xn12)
 
 #いけた
 
