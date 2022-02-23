@@ -42,11 +42,12 @@ def root():
     <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     </<body>
-    <h1>競合要素取得</h1><p>Googleの1ページ目に位置するサイトの要素を取得.</p>
+    <h1>Google1ページ目のサイト要素を取得</h1>
+    <p>読み込みに～1分かかります。</p>
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
       <input type="submit" value="検索" target="_blank" style="width:100%;margin-top: 10px;">
-    </form><p style="color: red;">読み込みに～1分かかります。<br>「Application error」が出たらもう一度検索を押すか別KWで検索してください。</p>
+    </form><p style="color: red;">「Application error」が出たらもう一度検索を押すか別KWで検索してください。500番エラーはKWを変えてね。</p>
     """
 
 
