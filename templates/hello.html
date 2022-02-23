@@ -25,38 +25,14 @@ table-layout: fixed;
   <p>{{ ln3 }}</p>
 <table class="table table-striped table-bordered">
 <tr>
-  <th>順位</th>
-  {% for bullet in suuji %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
   <th>URL</th>
   {% for bullet in ganba %}
   <td>{{ bullet }}</td>
   {% endfor %}
 </tr>
 <tr>
-  <th>カノニカルURL</th>
-  {% for bullet in xn4 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>オルタネートURL</th>
-  {% for bullet in xn5 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
   <th>ステータス</th>
   {% for bullet in xs %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>robots</th>
-  {% for bullet in xn12 %}
   <td>{{ bullet }}</td>
   {% endfor %}
 </tr>
@@ -76,36 +52,6 @@ table-layout: fixed;
   <th>見出し</th>
   {% for bullet in xn3 %}
   {{ bullet }}
-  {% endfor %}
-</tr>
-<tr>
-  <th>ogp:URL</th>
-  {% for bullet in xn6 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>ogp:Type</th>
-  {% for bullet in xn7 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>ogp:title</th>
-  {% for bullet in xn8 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>ogp:image</th>
-  {% for bullet in xn9 %}
-  <td>{{ bullet }}</td>
-  {% endfor %}
-</tr>
-<tr>
-  <th>ogp:description</th>
-  {% for bullet in xn10 %}
-  <td>{{ bullet }}</td>
   {% endfor %}
 </tr>
 </table>
