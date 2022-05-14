@@ -47,7 +47,7 @@ def root():
     <form action="/hello.html" method="post" target="_blank" >
       <input type="text" name="a" style="width:100%;" placeholder="検索キーワードを入力">
       <input type="submit" value="検索" target="_blank" style="width:100%;margin-top: 10px;">
-    </form><p style="color: red;">「Application error」が出たらもう一度検索を押すか別KWで検索してください。<br>500番エラーはKWを変えてね。</p>
+    </form><p style="color: red;">「Application error」が出たらもう一度検索を押すか別KWで検索してください。<br>500番エラーはKWを変えてね!!</p>
     """
 
 
