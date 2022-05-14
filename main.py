@@ -107,7 +107,9 @@ def hello():
         numbers += 1
         suuji.append(numbers)
         site_url = urllib.parse.unquote(urllib.parse.unquote(site_url))
-        ganba.append(str(site_url))
+        if 3 > suuji: 
+            suuji += 1
+            ganba.append(str(site_url))
     for ii in ganba:
         r = requests.get(ii, timeout=59)
         ii = str(r)
